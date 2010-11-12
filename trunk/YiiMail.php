@@ -58,7 +58,7 @@ class YiiMail extends CApplicationComponent
 	
 	/**
 	* @var string the delivery type.  Can be either 'php' or 'smtp'.  When 
-	* using 'php', PHP's mail() function will be used.
+	* using 'php', PHP's {@link mail()} function will be used.
 	* Defaults to 'php'.
 	*/
 	public $transportType = 'php';
@@ -97,10 +97,10 @@ class YiiMail extends CApplicationComponent
 	*/
 	protected $mailer;
 
-	private static $registeredScripts=false;
+	private static $registeredScripts = false;
 
 	/**
-	* Calls the registerScripts() method.
+	* Calls the {@link registerScripts()} method.
 	*/
 	public function init() {
 		$this->registerScripts();
@@ -108,7 +108,7 @@ class YiiMail extends CApplicationComponent
 	}
 	
 	/**
-	* Send the given YiiMailMessage like it would be sent in a mail client.
+	* Send a {@link YiiMailMessage} as it would be sent in a mail client.
 	* 
 	* All recipients (with the exception of Bcc) will be able to see the other
 	* recipients this message was sent to.
@@ -116,7 +116,8 @@ class YiiMail extends CApplicationComponent
 	* If you need to send to each recipient without disclosing details about the
 	* other recipients see {@link batchSend()}.
 	* 
-	* Recipient/sender data will be retreived from the YiiMailMessage object.
+	* Recipient/sender data will be retreived from the {@link YiiMailMessage} 
+	* object.
 	* 
 	* The return value is the number of recipients who were accepted for
 	* delivery.
@@ -133,7 +134,7 @@ class YiiMail extends CApplicationComponent
 	}
 
 	/**
-	* Send the given YiiMailMessage to all recipients individually.
+	* Send the given {@link YiiMailMessage} to all recipients individually.
 	* 
 	* This differs from {@link send()} in the way headers are presented to the 
 	* recipient.  The only recipient in the "To:" field will be the individual 
@@ -141,9 +142,9 @@ class YiiMail extends CApplicationComponent
 	* 
 	* If an iterator is provided, recipients will be read from the iterator 
 	* one-by-one, otherwise recipient data will be retreived from the 
-	* YiiMailMessage object.
+	* {@link YiiMailMessage} object.
 	* 
-	* Sender information is always read from the YiiMailMessage object.
+	* Sender information is always read from the {@link YiiMailMessage} object.
 	* 
 	* The return value is the number of recipients who were accepted for 
 	* delivery.
@@ -181,8 +182,7 @@ class YiiMail extends CApplicationComponent
 	}
 
 	/**
-	* Logs a YiiMailMessage in a (hopefully) readable way using Yii::log (as 
-	* long as $this->logging is set to true).
+	* Logs a YiiMailMessage in a (hopefully) readable way using Yii::log.
 	* @return string log message
 	*/
 	public static function log(YiiMailMessage $message) {
@@ -197,7 +197,7 @@ class YiiMail extends CApplicationComponent
 	/**
 	* Gets the SwiftMailer transport class instance, initializing it if it has 
 	* not been created yet
-	* @return mixed Swift_MailTransport or Swift_SmtpTransport
+	* @return mixed {@link Swift_MailTransport} or {@link Swift_SmtpTransport}
 	*/
 	public function getTransport() {
 		if ($this->transport===null) {
@@ -211,7 +211,7 @@ class YiiMail extends CApplicationComponent
 					$this->transport = Swift_SmtpTransport::newInstance();
 					foreach ($this->transportOptions as $option => $value)
 						$this->transport->{'set'.ucfirst($option)}($value); // sets option with the setter method
-					break;    			
+					break;
 			}
 		}
 		
@@ -219,7 +219,7 @@ class YiiMail extends CApplicationComponent
 	}
 	
 	/**
-	* Gets the SwiftMailer Swift_Mailer class instance
+	* Gets the SwiftMailer {@link Swift_Mailer} class instance
 	* @return Swift_Mailer
 	*/
 	public function getMailer() {
