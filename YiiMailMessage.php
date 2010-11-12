@@ -9,44 +9,47 @@
 
 /**
 * Any requests to set or get attributes or call methods on this class that are 
-* not found in that class are redirected to the Swift_Message object.
+* not found in that class are redirected to the {@link Swift_Mime_Message} 
+* object.
 * 
-* This means you need to look at the SwiftMailer documentation to see what 
-* methods are availiable for this class.  There are a *lot* of methods, more 
-* than I with to document.  Any methods availiable in Swift_Mime_Message are 
-* availiable here.
+* This means you need to look at the Swift Mailer documentation to see what 
+* methods are availiable for this class.  There are a <b>lot</b> of methods, 
+* more than I wish to document.  Any methods availiable in 
+* {@link Swift_Mime_Message} are availiable here.
 * 
 * Documentation for the most important methods can be found at 
 * {@link http://swiftmailer.org/docs/messages}
 * 
 * The YiiMailMessage component also allows using a shorthand for methods in 
-* Swift_Mime_Message that start with set* or get*
-* For instance, instead of calling <pre>$message->setFrom(...);</pre> you can 
-* use <pre>$message->from = '...'</pre>.
+* {@link Swift_Mime_Message} that start with set* or get*
+* For instance, instead of calling $message->setFrom('...') you can use 
+* $message->from = '...'.
 * 
 * Here are a few methods to get you started:
-* * setSubject('Your subject')
-* * setFrom(array('john@doe.com' => 'John Doe'))
-* * setTo(array('receiver@domain.org', 'other@domain.org' => 'A name'))
-* * attach(Swift_Attachment::fromPath('my-document.pdf'))
+* <ul>
+* 	<li>setSubject('Your subject')</li>
+* 	<li>setFrom(array('john@doe.com' => 'John Doe'))</li>
+* 	<li>setTo(array('receiver@domain.org', 'other@domain.org' => 'Name'))</li>
+* 	<li>attach(Swift_Attachment::fromPath('my-document.pdf'))</li>
+* </ul>
 */
 class YiiMailMessage extends CComponent {
 	
 	/**
 	* @var string the view to use for rendering the body, null if no view is 
-	* used.  An extra variable $mail will be passed to the view which you may 
+	* used.  An extra variable $mail will be passed to the view .which you may 
 	* use to set e.g. the email subject from within the view
 	*/
 	public $view;
 
 	/**
-	* @var Swift_Message
+	* @var Swift_Mime_Message
 	*/
 	public $message;
 
 	/**
 	* Any requests to set or get attributes or call methods on this class that 
-	* are not found are redirected to the Swift_Message object
+	* are not found are redirected to the {@link Swift_Mime_Message} object.
 	* @param string the attribute name
 	*/
 	public function __get($name) {
@@ -63,7 +66,7 @@ class YiiMailMessage extends CComponent {
 
 	/**
 	* Any requests to set or get attributes or call methods on this class that 
-	* are not found are redirected to the Swift_Message object
+	* are not found are redirected to the {@link Swift_Mime_Message} object.
 	* @param string the attribute name
 	*/
 	public function __set($name, $value) {
@@ -80,7 +83,7 @@ class YiiMailMessage extends CComponent {
 
 	/**
 	* Any requests to set or get attributes or call methods on this class that 
-	* are not found are redirected to the Swift_Message object
+	* are not found are redirected to the {@link Swift_Mime_Message} object.
 	* @param string the method name
 	*/
 	public function __call($name, $parameters) {
@@ -97,7 +100,7 @@ class YiiMailMessage extends CComponent {
 	/**
 	* You may optionally set some message info using the paramaters of this 
 	* constructor.
-	* Use {@link view} and {@link setBody()} for more control
+	* Use {@link view} and {@link setBody()} for more control.
 	* 
 	* @param string $subject
 	* @param string $body
