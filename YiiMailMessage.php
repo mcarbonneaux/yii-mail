@@ -131,7 +131,9 @@ class YiiMailMessage extends CComponent {
 			
 			// if Yii::app()->controller doesn't exist create a dummy 
 			// controller to render the view (needed in the console app)
-			if(!($controller = Yii::app()->controller))
+			if(isset(Yii::app()->controller))
+				$controller = Yii::app()->controller;
+			else
 				$controller = new CController('YiiMail');
 			
 			// renderPartial won't work with CConsoleApplication, so use 
