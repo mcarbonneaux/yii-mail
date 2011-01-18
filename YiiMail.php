@@ -209,8 +209,10 @@ class YiiMail extends CApplicationComponent
 					break;
 				case 'smtp':
 					$this->transport = Swift_SmtpTransport::newInstance();
-					foreach ($this->transportOptions as $option => $value)
-						$this->transport->{'set'.ucfirst($option)}($value); // sets option with the setter method
+					if ($this->transportOptions !== null) {
+						foreach ($this->transportOptions as $option => $value)
+							$this->transport->{'set'.ucfirst($option)}($value); // sets option with the setter method
+					}
 					break;
 			}
 		}
